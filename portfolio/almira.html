@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <!-- ✏️ Edit: ganti judul sesuai nama klien -->
+  <title>Almira's Baby & Kid's Spa – Logo Murah Bagus</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../style.css"/>
+  <style>
+    /* ── DETAIL PAGE SPECIFIC STYLES ── */
+    .detail-hero {
+      min-height: 55vh;
+      display: flex;
+      align-items: flex-end;
+      padding: 120px 5% 60px;
+      position: relative;
+      overflow: hidden;
+      background: var(--gray);
+    }
+
+    .detail-hero-bg {
+      position: absolute;
+      inset: 0;
+      /* ✏️ Edit: ganti dengan warna brand klien, atau pakai foto sebagai background */
+      background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+    }
+
+    /* Uncomment ini kalau mau pakai foto sebagai background hero:
+    .detail-hero-bg {
+      background-image: url('../assets/images/almira-hero.jpg');
+      background-size: cover;
+      background-position: center;
+      filter: brightness(0.4);
+    }
+    */
+
+    .detail-hero-bg-text {
+      position: absolute;
+      bottom: -20px;
+      right: 5%;
+      font-family: var(--font-display);
+      font-size: clamp(80px, 15vw, 180px);
+      color: rgba(255,255,255,0.03);
+      letter-spacing: 8px;
+      pointer-events: none;
+      user-select: none;
+      line-height: 1;
+    }
+
+    .detail-hero-content { position: relative; z-index: 1; max-width: 800px; }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--gray-light);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+      transition: color .2s;
+    }
+    .back-btn:hover { color: var(--white); }
+
+    .detail-cat {
+      display: inline-block;
+      background: rgba(232,36,12,0.15);
+      border: 1px solid rgba(232,36,12,0.4);
+      color: var(--red);
+      padding: 5px 14px;
+      border-radius: 100px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .detail-title {
+      font-family: var(--font-display);
+      font-size: clamp(42px, 7vw, 90px);
+      line-height: 0.95;
+      letter-spacing: 2px;
+      margin-bottom: 20px;
+    }
+
+    .detail-tagline {
+      color: var(--gray-light);
+      font-size: 1rem;
+      max-width: 520px;
+      line-height: 1.7;
+    }
+
+    /* ── MAIN CONTENT ── */
+    .detail-body {
+      padding: 80px 5%;
+      background: var(--black);
+      display: grid;
+      grid-template-columns: 1fr 360px;
+      gap: 60px;
+      align-items: start;
+    }
+
+    @media (max-width: 900px) {
+      .detail-body { grid-template-columns: 1fr; }
+    }
+
+    /* ── FOTO GALLERY ── */
+    .gallery-section {}
+    .gallery-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 20px;
+    }
+
+    .gallery-main {
+      width: 100%;
+      aspect-ratio: 4/3;
+      background: var(--gray);
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 12px;
+      cursor: zoom-in;
+    }
+    .gallery-main img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform .4s;
+    }
+    .gallery-main:hover img { transform: scale(1.04); }
+
+    /* Placeholder kalau belum ada foto */
+    .gallery-placeholder {
+      width: 100%; height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--gray-mid), var(--gray));
+      font-size: 4rem;
+      gap: 12px;
+      color: var(--gray-light);
+    }
+    .gallery-placeholder p { font-size: 0.8rem; font-family: var(--font-body); }
+
+    .gallery-thumbs {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+    }
+    .thumb {
+      aspect-ratio: 1;
+      background: var(--gray);
+      border-radius: 4px;
+      overflow: hidden;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: border-color .2s;
+    }
+    .thumb.active { border-color: var(--red); }
+    .thumb img { width: 100%; height: 100%; object-fit: cover; }
+    .thumb-placeholder {
+      width: 100%; height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      background: var(--gray-mid);
+    }
+
+    /* ── INFO SIDEBAR ── */
+    .info-sidebar {
+      position: sticky;
+      top: 100px;
+    }
+
+    .info-card {
+      background: var(--gray);
+      border-radius: 8px;
+      padding: 32px;
+      margin-bottom: 16px;
+    }
+
+    .info-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      letter-spacing: 1px;
+      margin-bottom: 20px;
+      color: var(--white);
+    }
+
+    .info-desc {
+      color: var(--gray-light);
+      font-size: 0.9rem;
+      line-height: 1.8;
+      margin-bottom: 0;
+    }
+
+    .info-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .meta-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 14px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .meta-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .meta-label {
+      font-size: 0.75rem;
+      color: var(--gray-light);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .meta-value {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--white);
+      text-align: right;
+    }
+
+    .color-swatches {
+      display: flex;
+      gap: 8px;
+      margin-top: 6px;
+    }
+    .swatch {
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      border: 2px solid rgba(255,255,255,0.1);
+      cursor: pointer;
+      title: attr(data-color);
+    }
+
+    .order-cta {
+      background: var(--red);
+      border-radius: 8px;
+      padding: 28px 32px;
+      text-align: center;
+    }
+    .order-cta p {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 16px;
+      line-height: 1.6;
+    }
+
+    /* ── OTHER WORKS ── */
+    .other-works {
+      padding: 80px 5%;
+      background: var(--gray);
+    }
+    .other-works-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 32px;
+    }
+    .other-works-header h2 {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      letter-spacing: 1px;
+    }
+    .other-works-header a {
+      color: var(--red);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+    .other-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 12px;
+    }
+
+    /* ── LIGHTBOX ── */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.92);
+      z-index: 500;
+      align-items: center;
+      justify-content: center;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 90vh;
+      object-fit: contain;
+      border-radius: 4px;
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 24px; right: 32px;
+      background: none; border: none;
+      color: white; font-size: 2rem;
+      cursor: pointer; line-height: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <a href="../index.html" class="nav-logo">LOGO<span>.</span>MURAH<span>.</span>BAGUS</a>
+    <ul class="nav-links">
+      <li><a href="../index.html#portofolio">Portofolio</a></li>
+      <li><a href="../index.html#harga">Harga</a></li>
+      <li><a href="https://wa.me/6281234567890" class="nav-cta" target="_blank">Order Sekarang</a></li>
+    </ul>
+  </nav>
+
+  <!-- ═══════════════════════════════════════
+       HERO DETAIL
+       ✏️ Edit: kategori, judul, tagline
+  ════════════════════════════════════════ -->
+  <div class="detail-hero">
+    <div class="detail-hero-bg"></div>
+    <div class="detail-hero-bg-text">LOGO</div>
+    <div class="detail-hero-content">
+      <a href="../index.html#portofolio" class="back-btn">← Kembali ke Portofolio</a>
+      <div class="detail-cat">Kuliner · F&B</div>
+      <!-- ✏️ Edit: nama klien -->
+      <h1 class="detail-title">MINANA<br/>COFFEE BOY</h1>
+      <!-- ✏️ Edit: tagline/deskripsi singkat -->
+      <p class="detail-tagline">Brand identity untuk kedai kopi lokal dengan karakter playful namun tetap modern.</p>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       BODY: GALLERY + SIDEBAR
+  ════════════════════════════════════════ -->
+  <div class="detail-body">
+
+    <!-- GALLERY -->
+    <div class="gallery-section">
+      <p class="gallery-label">Foto Produk</p>
+
+      <!-- Foto utama -->
+      <div class="gallery-main" onclick="openLightbox(currentImg)">
+        <!-- ✏️ OPSI A — Pakai foto asli:
+          <img id="mainImg" src="../assets/images/minana-1.jpg" alt="Minana Coffee Boy Logo">
+        -->
+        <!-- ✏️ OPSI B — Placeholder (hapus kalau sudah ada foto): -->
+        <div class="gallery-placeholder" id="mainPlaceholder">
+          🍵
+          <p>Foto logo akan tampil di sini</p>
+        </div>
+      </div>
+
+      <!-- Thumbnail -->
+      <!-- ✏️ Edit: tambah/kurangi thumb sesuai jumlah foto -->
+      <div class="gallery-thumbs">
+        <div class="thumb active" onclick="changeImg(0, this)">
+          <div class="thumb-placeholder">🍵</div>
+          <!-- ✏️ Kalau sudah ada foto: <img src="../assets/images/minana-1.jpg"> -->
+        </div>
+        <div class="thumb" onclick="changeImg(1, this)">
+          <div class="thumb-placeholder">📋</div>
+        </div>
+        <div class="thumb" onclick="changeImg(2, this)">
+          <div class="thumb-placeholder">🖨️</div>
+        </div>
+        <div class="thumb" onclick="changeImg(3, this)">
+          <div class="thumb-placeholder">📱</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SIDEBAR INFO -->
+    <div class="info-sidebar">
+
+      <!-- Deskripsi -->
+      <div class="info-card">
+        <h3>TENTANG LOGO INI</h3>
+        <!-- ✏️ Edit: deskripsi logo -->
+        <p class="info-desc">
+          Logo Minana Coffee Boy dirancang dengan pendekatan yang playful namun tetap bersih dan modern. Menggunakan karakter ikonik yang merepresentasikan semangat kopi lokal Indonesia dengan sentuhan kontemporer.
+          <br/><br/>
+          Font yang digunakan bersifat bold dan tegas untuk menciptakan kesan yang kuat dan mudah diingat, cocok diaplikasikan di berbagai media mulai dari kemasan hingga signage toko.
+        </p>
+      </div>
+
+      <!-- Detail Proyek -->
+      <div class="info-card">
+        <h3>DETAIL PROYEK</h3>
+        <div class="info-meta">
+          <!-- ✏️ Edit: sesuaikan detail proyek -->
+          <div class="meta-item">
+            <span class="meta-label">Klien</span>
+            <span class="meta-value">Minana Coffee Boy</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Kategori</span>
+            <span class="meta-value">Kuliner · F&B</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Paket</span>
+            <span class="meta-value">Standard</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Durasi</span>
+            <span class="meta-value">8 Jam</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Format File</span>
+            <span class="meta-value">PNG, JPG, PDF, AI</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Warna Brand</span>
+            <div>
+              <!-- ✏️ Edit: ganti kode warna sesuai brand klien -->
+              <div class="color-swatches">
+                <div class="swatch" style="background:#3B2314" title="#3B2314"></div>
+                <div class="swatch" style="background:#C8860A" title="#C8860A"></div>
+                <div class="swatch" style="background:#F5F0EB" title="#F5F0EB"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="order-cta">
+        <p>Mau logo serupa untuk bisnis kamu? Chat kami sekarang!</p>
+        <a href="https://wa.me/6281234567890?text=Halo,%20saya%20tertarik%20dengan%20desain%20seperti%20Minana%20Coffee%20Boy" class="btn-primary" target="_blank" style="width:100%;justify-content:center;">
+          💬 Order Sekarang
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       KARYA LAINNYA
+       ✏️ Edit: tambah link ke halaman portfolio lain
+  ════════════════════════════════════════ -->
+  <div class="other-works">
+    <div class="other-works-header">
+      <h2>KARYA LAINNYA</h2>
+      <a href="../index.html#portofolio">Lihat semua →</a>
+    </div>
+    <div class="other-grid">
+      <!-- ✏️ Copy blok ini untuk tambah karya lain -->
+      <div class="portfolio-card" onclick="window.location='almira-spa.html'" style="cursor:pointer">
+        <div class="portfolio-placeholder">💆<p>Almira Baby & Kids Spa</p></div>
+        <div class="portfolio-overlay">
+          <div class="portfolio-info">
+            <div class="portfolio-name">Almira Baby & Kids Spa</div>
+            <div class="portfolio-cat">Kecantikan · Spa</div>
+          </div>
+        </div>
+      </div>
+      <div class="portfolio-card" onclick="window.location='sasmito-makeover.html'" style="cursor:pointer">
+        <div class="portfolio-placeholder">💄<p>Sasmito Makeover</p></div>
+        <div class="portfolio-overlay">
+          <div class="portfolio-info">
+            <div class="portfolio-name">Sasmito Makeover</div>
+            <div class="portfolio-cat">Kecantikan · MUA</div>
+          </div>
+        </div>
+      </div>
+      <div class="portfolio-card" onclick="window.location='happy-toppokki.html'" style="cursor:pointer">
+        <div class="portfolio-placeholder">🌶️<p>Happy Toppokki</p></div>
+        <div class="portfolio-overlay">
+          <div class="portfolio-info">
+            <div class="portfolio-name">Happy Toppokki</div>
+            <div class="portfolio-cat">Kuliner · Korean Food</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+    <img id="lightboxImg" src="" alt=""/>
+  </div>
+
+  <!-- WA FLOAT -->
+  <a href="https://wa.me/6281234567890" class="wa-float" target="_blank" title="Chat WhatsApp">💬</a>
+
+  <script>
+    // ── GALLERY SWITCH ──
+    // ✏️ Edit: sesuaikan array foto dengan path gambar asli kamu
+    const images = [
+      { src: '../assets/images/minana-1.jpg', placeholder: '🍵' },
+      { src: '../assets/images/minana-2.jpg', placeholder: '📋' },
+      { src: '../assets/images/minana-3.jpg', placeholder: '🖨️' },
+      { src: '../assets/images/minana-4.jpg', placeholder: '📱' },
+    ];
+
+    let currentImg = 0;
+
+    function changeImg(index, thumbEl) {
+      currentImg = index;
+      document.querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
+      thumbEl.classList.add('active');
+      // Uncomment ini kalau sudah pakai foto asli:
+      // document.getElementById('mainImg').src = images[index].src;
+    }
+
+    // ── LIGHTBOX ──
+    function openLightbox(index) {
+      // Uncomment ini kalau sudah pakai foto asli:
+      // document.getElementById('lightboxImg').src = images[index].src;
+      // document.getElementById('lightbox').classList.add('open');
+    }
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('open');
+    }
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+
+    // ── FADE IN ──
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
