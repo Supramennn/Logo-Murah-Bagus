@@ -3,56 +3,46 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Almira Baby & Kids Spa – Logo Murah Bagus</title>
+  <title>Almira's Baby & Kid's Spa – Logo Murah Bagus</title>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="../style.css"/>
   <style>
+    /* ── HERO ── */
     .detail-hero {
-      min-height: 55vh;
-      display: flex;
-      align-items: flex-end;
-      padding: 120px 5% 60px;
-      position: relative;
-      overflow: hidden;
-      background: var(--gray);
+      min-height: 55vh; display: flex; align-items: flex-end;
+      padding: 120px 5% 60px; position: relative; overflow: hidden;
     }
     .detail-hero-bg {
-      position: absolute;
-      inset: 0;
+      position: absolute; inset: 0;
       background: linear-gradient(135deg, #0d1f2d 0%, #1a3a4a 100%);
     }
     .detail-hero-bg-text {
-      position: absolute;
-      bottom: -20px; right: 5%;
-      font-family: var(--font-display);
-      font-size: clamp(80px, 15vw, 180px);
-      color: rgba(255,255,255,0.03);
-      letter-spacing: 8px;
+      position: absolute; bottom: -20px; right: 5%;
+      font-family: var(--font-display); font-size: clamp(80px, 15vw, 180px);
+      color: rgba(255,255,255,0.03); letter-spacing: 8px;
       pointer-events: none; user-select: none; line-height: 1;
     }
     .detail-hero-content { position: relative; z-index: 1; max-width: 800px; }
     .back-btn {
       display: inline-flex; align-items: center; gap: 8px;
-      color: var(--gray-light); text-decoration: none;
-      font-size: 0.82rem; font-weight: 600; letter-spacing: 1px;
-      text-transform: uppercase; margin-bottom: 28px; transition: color .2s;
+      color: var(--gray-light); text-decoration: none; font-size: 0.82rem;
+      font-weight: 600; letter-spacing: 1px; text-transform: uppercase;
+      margin-bottom: 28px; transition: color .2s;
     }
     .back-btn:hover { color: var(--white); }
     .detail-cat {
-      display: inline-block;
-      background: rgba(232,36,12,0.15); border: 1px solid rgba(232,36,12,0.4);
-      color: var(--red); padding: 5px 14px; border-radius: 100px;
-      font-size: 0.75rem; font-weight: 700; letter-spacing: 2px;
-      text-transform: uppercase; margin-bottom: 16px;
+      display: inline-block; background: rgba(232,36,12,0.15);
+      border: 1px solid rgba(232,36,12,0.4); color: var(--red);
+      padding: 5px 14px; border-radius: 100px; font-size: 0.75rem;
+      font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px;
     }
     .detail-title {
-      font-family: var(--font-display);
-      font-size: clamp(42px, 7vw, 90px);
+      font-family: var(--font-display); font-size: clamp(42px, 7vw, 90px);
       line-height: 0.95; letter-spacing: 2px; margin-bottom: 20px;
     }
     .detail-tagline { color: var(--gray-light); font-size: 1rem; max-width: 520px; line-height: 1.7; }
 
-    /* BODY */
+    /* ── BODY LAYOUT ── */
     .detail-body {
       padding: 80px 5%; background: var(--black);
       display: grid; grid-template-columns: 1fr 360px;
@@ -60,61 +50,115 @@
     }
     @media (max-width: 900px) { .detail-body { grid-template-columns: 1fr; } }
 
-    /* GALLERY */
-    .gallery-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--red); margin-bottom: 20px; }
-    .gallery-main {
-      width: 100%; aspect-ratio: 4/3; background: var(--gray);
-      border-radius: 8px; overflow: hidden; margin-bottom: 12px; cursor: zoom-in;
+    /* ── CAROUSEL ── */
+    .gallery-label {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 3px;
+      text-transform: uppercase; color: var(--red); margin-bottom: 20px;
     }
-    .gallery-main img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
-    .gallery-main:hover img { transform: scale(1.04); }
-    .gallery-placeholder {
+    .carousel-wrap {
+      position: relative; border-radius: 8px;
+      overflow: hidden; background: var(--gray);
+    }
+    .carousel-track {
+      display: flex;
+      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      will-change: transform;
+    }
+    .carousel-slide {
+      min-width: 100%; aspect-ratio: 4/3;
+      position: relative; overflow: hidden;
+    }
+    .carousel-slide img { width: 100%; height: 100%; object-fit: cover; }
+    .slide-placeholder {
       width: 100%; height: 100%; display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
+      align-items: center; justify-content: center; font-size: 4rem;
+      gap: 12px; color: var(--gray-light);
       background: linear-gradient(135deg, #0d2233, #1a3a4a);
-      font-size: 4rem; gap: 12px; color: var(--gray-light);
     }
-    .gallery-placeholder p { font-size: 0.8rem; font-family: var(--font-body); }
-    .gallery-thumbs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
-    .thumb {
-      aspect-ratio: 1; background: var(--gray); border-radius: 4px;
-      overflow: hidden; cursor: pointer; border: 2px solid transparent; transition: border-color .2s;
-    }
-    .thumb.active { border-color: var(--red); }
-    .thumb img { width: 100%; height: 100%; object-fit: cover; }
-    .thumb-placeholder {
-      width: 100%; height: 100%; display: flex;
-      align-items: center; justify-content: center;
-      font-size: 1.5rem; background: var(--gray-mid);
+    .slide-placeholder p { font-size: 0.82rem; font-family: var(--font-body); }
+    .carousel-slide::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.4) 0%, transparent 40%);
+      pointer-events: none;
     }
 
-    /* SIDEBAR */
+    /* Tombol panah */
+    .carousel-btn {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      z-index: 10; background: rgba(0,0,0,0.55);
+      border: 1px solid rgba(255,255,255,0.15); color: var(--white);
+      width: 44px; height: 44px; border-radius: 50%; font-size: 1.1rem;
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      transition: background .2s, transform .2s; backdrop-filter: blur(4px);
+    }
+    .carousel-btn:hover { background: var(--red); transform: translateY(-50%) scale(1.08); }
+    .carousel-btn.prev { left: 14px; }
+    .carousel-btn.next { right: 14px; }
+
+    /* Counter */
+    .carousel-counter {
+      position: absolute; bottom: 14px; right: 16px; z-index: 10;
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 1px;
+      color: rgba(255,255,255,0.75); background: rgba(0,0,0,0.4);
+      padding: 4px 10px; border-radius: 100px; backdrop-filter: blur(4px);
+    }
+
+    /* Progress bar */
+    .carousel-progress {
+      position: absolute; bottom: 0; left: 0;
+      height: 3px; background: var(--red); width: 0%;
+    }
+    .carousel-progress.animating {
+      animation: cprogress var(--dur, 4s) linear forwards;
+    }
+    @keyframes cprogress { from { width: 0%; } to { width: 100%; } }
+
+    /* Thumbnails */
+    .carousel-thumbs {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 8px; margin-top: 10px;
+    }
+    .c-thumb {
+      aspect-ratio: 1; border-radius: 4px; overflow: hidden;
+      cursor: pointer; border: 2px solid transparent;
+      transition: border-color .2s, opacity .2s; opacity: 0.5;
+    }
+    .c-thumb.active { border-color: var(--red); opacity: 1; }
+    .c-thumb:hover { opacity: 0.8; }
+    .c-thumb img { width: 100%; height: 100%; object-fit: cover; }
+    .c-thumb-placeholder {
+      width: 100%; height: 100%; display: flex; align-items: center;
+      justify-content: center; font-size: 1.4rem;
+      background: linear-gradient(135deg, #0d2233, #1a3a4a);
+    }
+
+    /* ── SIDEBAR ── */
     .info-sidebar { position: sticky; top: 100px; }
     .info-card { background: var(--gray); border-radius: 8px; padding: 32px; margin-bottom: 16px; }
-    .info-card h3 { font-family: var(--font-display); font-size: 1.3rem; letter-spacing: 1px; margin-bottom: 20px; color: var(--white); }
+    .info-card h3 { font-family: var(--font-display); font-size: 1.3rem; letter-spacing: 1px; margin-bottom: 20px; }
     .info-desc { color: var(--gray-light); font-size: 0.9rem; line-height: 1.8; }
     .info-meta { display: flex; flex-direction: column; gap: 14px; }
     .meta-item { display: flex; justify-content: space-between; align-items: center; padding-bottom: 14px; border-bottom: 1px solid rgba(255,255,255,0.06); }
     .meta-item:last-child { border-bottom: none; padding-bottom: 0; }
     .meta-label { font-size: 0.75rem; color: var(--gray-light); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
-    .meta-value { font-size: 0.88rem; font-weight: 700; color: var(--white); text-align: right; }
+    .meta-value { font-size: 0.88rem; font-weight: 700; text-align: right; }
     .color-swatches { display: flex; gap: 8px; margin-top: 6px; }
-    .swatch { width: 28px; height: 28px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.1); cursor: pointer; }
+    .swatch { width: 28px; height: 28px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.1); }
     .order-cta { background: var(--red); border-radius: 8px; padding: 28px 32px; text-align: center; }
     .order-cta p { font-size: 0.85rem; color: rgba(255,255,255,0.8); margin-bottom: 16px; line-height: 1.6; }
 
-    /* OTHER WORKS */
+    /* ── OTHER WORKS ── */
     .other-works { padding: 80px 5%; background: var(--gray); }
     .other-works-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 32px; }
     .other-works-header h2 { font-family: var(--font-display); font-size: 2rem; letter-spacing: 1px; }
     .other-works-header a { color: var(--red); text-decoration: none; font-size: 0.85rem; font-weight: 600; }
     .other-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
 
-    /* LIGHTBOX */
+    /* ── LIGHTBOX ── */
     .lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 500; align-items: center; justify-content: center; }
     .lightbox.open { display: flex; }
     .lightbox img { max-width: 90vw; max-height: 90vh; object-fit: contain; border-radius: 4px; }
-    .lightbox-close { position: absolute; top: 24px; right: 32px; background: none; border: none; color: white; font-size: 2rem; cursor: pointer; line-height: 1; }
+    .lightbox-close { position: absolute; top: 24px; right: 32px; background: none; border: none; color: white; font-size: 2rem; cursor: pointer; }
   </style>
 </head>
 <body>
@@ -136,66 +180,84 @@
     <div class="detail-hero-content">
       <a href="../index.html#portofolio" class="back-btn">← Kembali ke Portofolio</a>
       <div class="detail-cat">Kecantikan · Spa</div>
-      <h1 class="detail-title">ALMIRA<br/>BABY & KIDS<br/>SPA</h1>
-      <p class="detail-tagline">Brand identity lembut dan terpercaya untuk spa khusus bayi dan anak-anak, mengutamakan kesan hangat, aman, dan profesional.</p>
+      <h1 class="detail-title">ALMIRA'S<br/>BABY & KID'S<br/>SPA</h1>
+      <p class="detail-tagline">Brand identity lembut dan terpercaya untuk spa khusus bayi dan anak-anak.</p>
     </div>
   </div>
 
   <!-- BODY -->
   <div class="detail-body">
 
-    <!-- GALLERY -->
+    <!-- ═══════════════════════════════════════
+         CAROUSEL
+         ✏️ Cara tambah/ganti foto:
+            1. Simpan foto di folder: assets/images/
+            2. Hapus <div class="slide-placeholder">
+            3. Ganti dengan: <img src="../assets/images/namafile.jpg" alt="...">
+            4. Lakukan hal sama di bagian .c-thumb
+            5. Tambah slide baru = copy satu blok .carousel-slide
+            6. Update TOTAL_SLIDES di <script> bawah
+    ════════════════════════════════════════ -->
     <div class="gallery-section">
       <p class="gallery-label">Foto Produk</p>
 
-      <div class="gallery-main" onclick="openLightbox(currentImg)">
-        <!--
-          ✏️ Kalau sudah ada foto, hapus div placeholder di bawah,
-          lalu uncomment tag img ini:
-          <img id="mainImg" src="../assets/images/almira-1.jpg" alt="Almira Baby & Kids Spa Logo">
-        -->
-        <div class="gallery-placeholder" id="mainPlaceholder">
-          💆
-          <p>Foto logo akan tampil di sini</p>
+      <div class="carousel-wrap" id="carousel">
+        <div class="carousel-track" id="carouselTrack">
+
+          <!-- SLIDE 1 ✏️ ganti placeholder dengan <img> kalau foto sudah ada -->
+          <div class="carousel-slide">
+            <div class="slide-placeholder">💆<p>Logo Utama</p></div>
+          </div>
+
+          <!-- SLIDE 2 ✏️ -->
+          <div class="carousel-slide">
+            <div class="slide-placeholder">🧴<p>Aplikasi di Kemasan</p></div>
+          </div>
+
+          <!-- SLIDE 3 ✏️ -->
+          <div class="carousel-slide">
+            <div class="slide-placeholder">🖨️<p>Mockup Cetak</p></div>
+          </div>
+
+          <!-- SLIDE 4 ✏️ -->
+          <div class="carousel-slide">
+            <div class="slide-placeholder">📱<p>Aplikasi di Sosmed</p></div>
+          </div>
+
         </div>
+
+        <button class="carousel-btn prev" onclick="moveCarousel(-1)">&#8592;</button>
+        <button class="carousel-btn next" onclick="moveCarousel(1)">&#8594;</button>
+        <div class="carousel-counter" id="carouselCounter">1 / 4</div>
+        <div class="carousel-progress" id="carouselProgress"></div>
       </div>
 
-      <div class="gallery-thumbs">
-        <div class="thumb active" onclick="changeImg(0, this)">
-          <div class="thumb-placeholder">💆</div>
-        </div>
-        <div class="thumb" onclick="changeImg(1, this)">
-          <div class="thumb-placeholder">🧴</div>
-        </div>
-        <div class="thumb" onclick="changeImg(2, this)">
-          <div class="thumb-placeholder">🖨️</div>
-        </div>
-        <div class="thumb" onclick="changeImg(3, this)">
-          <div class="thumb-placeholder">📱</div>
-        </div>
+      <!-- THUMBNAILS ✏️ -->
+      <div class="carousel-thumbs">
+        <div class="c-thumb active" onclick="goToSlide(0)"><div class="c-thumb-placeholder">💆</div></div>
+        <div class="c-thumb" onclick="goToSlide(1)"><div class="c-thumb-placeholder">🧴</div></div>
+        <div class="c-thumb" onclick="goToSlide(2)"><div class="c-thumb-placeholder">🖨️</div></div>
+        <div class="c-thumb" onclick="goToSlide(3)"><div class="c-thumb-placeholder">📱</div></div>
       </div>
     </div>
 
     <!-- SIDEBAR -->
     <div class="info-sidebar">
-
       <div class="info-card">
         <h3>TENTANG LOGO INI</h3>
-        <!--✏️ Edit: sesuaikan deskripsi -->
         <p class="info-desc">
-          Logo Almira Baby & Kids Spa dirancang dengan pendekatan yang lembut dan menenangkan, mencerminkan kepercayaan orang tua dalam merawat si kecil. Menggunakan elemen visual yang playful namun tetap terlihat bersih dan profesional.
+          Logo Almira's Baby & Kid's Spa dirancang dengan pendekatan lembut dan menenangkan, mencerminkan kepercayaan orang tua dalam merawat si kecil. Elemen visual playful namun tetap bersih dan profesional.
           <br/><br/>
-          Palet warna biru muda dan putih dipilih untuk memberikan kesan bersih, aman, dan terpercaya — nilai utama yang ingin dikomunikasikan brand ini kepada para orang tua.
+          Palet warna biru muda dan putih dipilih untuk memberikan kesan bersih, aman, dan terpercaya — nilai utama yang ingin dikomunikasikan kepada para orang tua.
         </p>
       </div>
 
       <div class="info-card">
         <h3>DETAIL PROYEK</h3>
         <div class="info-meta">
-          <!-- ✏️ Edit: sesuaikan detail -->
           <div class="meta-item">
             <span class="meta-label">Klien</span>
-            <span class="meta-value">Almira Baby & Kids Spa</span>
+            <span class="meta-value">Almira's Baby & Kid's Spa</span>
           </div>
           <div class="meta-item">
             <span class="meta-label">Kategori</span>
@@ -216,11 +278,10 @@
           <div class="meta-item">
             <span class="meta-label">Warna Brand</span>
             <div>
-              <!-- ✏️ Edit: ganti kode warna sesuai brand -->
               <div class="color-swatches">
-                <div class="swatch" style="background:#A8D8EA" title="#A8D8EA"></div>
-                <div class="swatch" style="background:#F9F3F0" title="#F9F3F0"></div>
-                <div class="swatch" style="background:#E8A598" title="#E8A598"></div>
+                <div class="swatch" style="background:#A8D8EA"></div>
+                <div class="swatch" style="background:#F9F3F0"></div>
+                <div class="swatch" style="background:#E8A598"></div>
               </div>
             </div>
           </div>
@@ -229,11 +290,11 @@
 
       <div class="order-cta">
         <p>Tertarik dengan desain serupa untuk bisnis kamu?</p>
-        <a href="https://wa.me/6281234567890?text=Halo,%20saya%20tertarik%20dengan%20desain%20seperti%20Almira%20Baby%20%26%20Kids%20Spa" class="btn-primary" target="_blank" style="width:100%;justify-content:center;">
-          💬 Order Sekarang
+        <a href="https://wa.me/6281234567890?text=Halo,%20saya%20mau%20tanya%20soal%20logo" class="btn-white" target="_blank">
+          <img src="icons8-whatsapp-logo-80.apng.png" alt="WhatsApp" width="34" height="34">
+          Chat WhatsApp Sekarang
         </a>
       </div>
-
     </div>
   </div>
 
@@ -281,41 +342,91 @@
   </div>
 
   <!-- WA FLOAT -->
-  <a href="https://wa.me/6281234567890" class="wa-float" target="_blank" title="Chat WhatsApp">💬</a>
+    <a href="https://wa.me/6281234567890?text=Halo,%20saya%20mau%20tanya%20soal%20logo" class="wa-float" target="_blank" title="Chat WhatsApp">
+  <img src="icons8-whatsapp-logo-80.apng.png" alt="WhatsApp" width="34" height="34">
+</a>
 
   <script>
-    // ✏️ Edit: sesuaikan path foto asli
-    const images = [
-      { src: '../assets/images/almira-1.jpg', placeholder: '💆' },
-      { src: '../assets/images/almira-2.jpg', placeholder: '🧴' },
-      { src: '../assets/images/almira-3.jpg', placeholder: '🖨️' },
-      { src: '../assets/images/almira-4.jpg', placeholder: '📱' },
-    ];
+    // ═══════════════════════════════════════
+    // CAROUSEL ENGINE
+    // ✏️ Edit 2 variabel ini saja:
+    const TOTAL_SLIDES = 4;      // jumlah foto/slide
+    const AUTOPLAY_MS  = 4000;   // jeda auto-play (ms). 4000 = 4 detik
+    // ═══════════════════════════════════════
 
-    let currentImg = 0;
+    let current    = 0;
+    let autoTimer  = null;
+    let touchStartX = 0;
+    let isPaused   = false;
 
-    function changeImg(index, thumbEl) {
-      currentImg = index;
-      document.querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
-      thumbEl.classList.add('active');
-      // Uncomment kalau sudah pakai foto asli:
-      // document.getElementById('mainImg').src = images[index].src;
+    const track   = document.getElementById('carouselTrack');
+    const counter = document.getElementById('carouselCounter');
+    const bar     = document.getElementById('carouselProgress');
+    const thumbs  = document.querySelectorAll('.c-thumb');
+
+    function goToSlide(i) {
+      current = ((i % TOTAL_SLIDES) + TOTAL_SLIDES) % TOTAL_SLIDES;
+      track.style.transform = `translateX(-${current * 100}%)`;
+      counter.textContent   = `${current + 1} / ${TOTAL_SLIDES}`;
+      thumbs.forEach((t, idx) => t.classList.toggle('active', idx === current));
+      restartBar();
     }
 
-    function openLightbox(index) {
-      // Uncomment kalau sudah pakai foto asli:
-      // document.getElementById('lightboxImg').src = images[index].src;
-      // document.getElementById('lightbox').classList.add('open');
+    function moveCarousel(dir) {
+      goToSlide(current + dir);
+      resetAutoplay();
     }
+
+    function restartBar() {
+      bar.classList.remove('animating');
+      bar.style.animationDuration = AUTOPLAY_MS + 'ms';
+      void bar.offsetWidth; // force reflow
+      if (!isPaused) bar.classList.add('animating');
+    }
+
+    function startAutoplay() {
+      autoTimer = setInterval(() => goToSlide(current + 1), AUTOPLAY_MS);
+    }
+
+    function resetAutoplay() {
+      clearInterval(autoTimer);
+      startAutoplay();
+    }
+
+    // Pause saat hover
+    document.getElementById('carousel').addEventListener('mouseenter', () => {
+      isPaused = true;
+      clearInterval(autoTimer);
+      bar.classList.remove('animating');
+    });
+    document.getElementById('carousel').addEventListener('mouseleave', () => {
+      isPaused = false;
+      restartBar();
+      resetAutoplay();
+    });
+
+    // Swipe gesture (mobile)
+    track.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+    track.addEventListener('touchend', e => {
+      const diff = touchStartX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 50) moveCarousel(diff > 0 ? 1 : -1);
+    });
+
+    // Keyboard
+    document.addEventListener('keydown', e => {
+      if (e.key === 'ArrowLeft')  moveCarousel(-1);
+      if (e.key === 'ArrowRight') moveCarousel(1);
+      if (e.key === 'Escape')     closeLightbox();
+    });
+
+    // Lightbox
     function closeLightbox() {
       document.getElementById('lightbox').classList.remove('open');
     }
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+    // Init
+    goToSlide(0);
+    startAutoplay();
   </script>
 
 </body>
