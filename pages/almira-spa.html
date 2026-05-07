@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Almira Baby & Kids Spa – Logo Murah Bagus</title>
+  <link rel="stylesheet" href="../../styles/main.css"/>
+  <style>
+    /* ── Hero override: warna spesifik brand Almira ── */
+    .detail-hero__bg {
+      background: linear-gradient(135deg, #0d1f2d 0%, #1a3a4a 100%);
+    }
+    /* ── Carousel placeholder override ── */
+    .carousel__placeholder,
+    .carousel__thumb-placeholder {
+      background: linear-gradient(135deg, #0d2233, #1a3a4a);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header>
+    <nav class="navbar" id="navbar">
+      <a href="../../index.html" class="navbar__logo">LOGO<span>.</span>MURAH<span>.</span>BAGUS</a>
+      <ul class="navbar__links">
+        <li><a href="../../index.html#portofolio">Portofolio</a></li>
+        <li><a href="../../index.html#harga">Harga</a></li>
+        <li><a href="https://wa.me/6281234567890" class="navbar__cta" target="_blank" rel="noopener">Order Sekarang</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <div class="detail-hero">
+      <div class="detail-hero__bg"></div>
+      <div class="detail-hero__bg-text" aria-hidden="true">ALMIRA</div>
+      <div class="detail-hero__content">
+        <a href="../../index.html#portofolio" class="back-btn">← Kembali ke Portofolio</a>
+        <div class="detail-cat">Kecantikan · Spa</div>
+        <!-- ✏️ Edit: nama & tagline klien -->
+        <h1 class="detail-hero__title">ALMIRA<br/>BABY & KIDS<br/>SPA</h1>
+        <p class="detail-hero__tagline">Brand identity lembut dan terpercaya untuk spa khusus bayi dan anak-anak.</p>
+      </div>
+    </div>
+
+    <!-- BODY: GALLERY + SIDEBAR -->
+    <div class="detail-body">
+
+      <!-- ════════════════════════════
+           CAROUSEL
+           ✏️ Cara ganti foto:
+              1. Simpan foto di: assets/images/
+              2. Hapus .carousel__placeholder
+              3. Ganti dengan: <img src="../../assets/images/namafile.jpg" alt="...">
+              4. Lakukan hal sama di .carousel__thumb
+              5. Tambah slide = copy satu .carousel__slide
+              6. Update totalSlides di <script> bawah
+      ════════════════════════════ -->
+      <section class="gallery-section" aria-label="Galeri foto">
+        <span class="gallery-label">Foto Produk</span>
+
+        <div class="carousel" id="carousel">
+          <div class="carousel__track" id="carouselTrack">
+
+            <!-- SLIDE 1 ✏️ -->
+            <div class="carousel__slide">
+              <div class="carousel__placeholder">💆<p>Logo Utama</p></div>
+              <!-- <img src="../../assets/images/almira-1.jpg" alt="Almira Logo Utama"> -->
+            </div>
+
+            <!-- SLIDE 2 ✏️ -->
+            <div class="carousel__slide">
+              <div class="carousel__placeholder">🧴<p>Aplikasi di Kemasan</p></div>
+              <!-- <img src="../../assets/images/almira-2.jpg" alt="Almira Kemasan"> -->
+            </div>
+
+            <!-- SLIDE 3 ✏️ -->
+            <div class="carousel__slide">
+              <div class="carousel__placeholder">🖨️<p>Mockup Cetak</p></div>
+              <!-- <img src="../../assets/images/almira-3.jpg" alt="Almira Mockup"> -->
+            </div>
+
+            <!-- SLIDE 4 ✏️ -->
+            <div class="carousel__slide">
+              <div class="carousel__placeholder">📱<p>Aplikasi di Sosmed</p></div>
+              <!-- <img src="../../assets/images/almira-4.jpg" alt="Almira Sosmed"> -->
+            </div>
+
+          </div>
+
+          <button class="carousel__btn carousel__btn--prev" aria-label="Foto sebelumnya">&#8592;</button>
+          <button class="carousel__btn carousel__btn--next" aria-label="Foto berikutnya">&#8594;</button>
+          <div class="carousel__counter" id="carouselCounter" aria-live="polite">1 / 4</div>
+          <div class="carousel__progress" id="carouselProgress" aria-hidden="true"></div>
+        </div>
+
+        <!-- THUMBNAILS ✏️ -->
+        <div class="carousel__thumbs" role="tablist" aria-label="Navigasi foto">
+          <div class="carousel__thumb is-active" onclick="window.carouselGoTo(0)" role="tab">
+            <div class="carousel__thumb-placeholder">💆</div>
+            <!-- <img src="../../assets/images/almira-1.jpg" alt="Thumb 1"> -->
+          </div>
+          <div class="carousel__thumb" onclick="window.carouselGoTo(1)" role="tab">
+            <div class="carousel__thumb-placeholder">🧴</div>
+          </div>
+          <div class="carousel__thumb" onclick="window.carouselGoTo(2)" role="tab">
+            <div class="carousel__thumb-placeholder">🖨️</div>
+          </div>
+          <div class="carousel__thumb" onclick="window.carouselGoTo(3)" role="tab">
+            <div class="carousel__thumb-placeholder">📱</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside class="detail-sidebar">
+
+        <div class="info-card">
+          <h2 class="info-card__title">TENTANG LOGO INI</h2>
+          <!-- ✏️ Edit: deskripsi logo -->
+          <p class="info-card__desc">
+            Logo Almira Baby & Kids Spa dirancang dengan pendekatan lembut dan menenangkan, mencerminkan kepercayaan orang tua dalam merawat si kecil.
+            <br/><br/>
+            Palet warna biru muda dan putih dipilih untuk memberikan kesan bersih, aman, dan terpercaya.
+          </p>
+        </div>
+
+        <div class="info-card">
+          <h2 class="info-card__title">DETAIL PROYEK</h2>
+          <!-- ✏️ Edit: detail proyek -->
+          <dl class="meta-list">
+            <div class="meta-item">
+              <dt class="meta-item__label">Klien</dt>
+              <dd class="meta-item__value">Almira Baby & Kids Spa</dd>
+            </div>
+            <div class="meta-item">
+              <dt class="meta-item__label">Kategori</dt>
+              <dd class="meta-item__value">Kecantikan · Spa</dd>
+            </div>
+            <div class="meta-item">
+              <dt class="meta-item__label">Paket</dt>
+              <dd class="meta-item__value">Standard</dd>
+            </div>
+            <div class="meta-item">
+              <dt class="meta-item__label">Durasi</dt>
+              <dd class="meta-item__value">10 Jam</dd>
+            </div>
+            <div class="meta-item">
+              <dt class="meta-item__label">Format File</dt>
+              <dd class="meta-item__value">PNG, JPG, PDF, AI</dd>
+            </div>
+            <div class="meta-item">
+              <dt class="meta-item__label">Warna Brand</dt>
+              <dd class="meta-item__value">
+                <!-- ✏️ Edit: warna brand klien -->
+                <div class="color-swatches">
+                  <div class="color-swatch" style="background:#A8D8EA" title="#A8D8EA"></div>
+                  <div class="color-swatch" style="background:#F9F3F0" title="#F9F3F0"></div>
+                  <div class="color-swatch" style="background:#E8A598" title="#E8A598"></div>
+                </div>
+              </dd>
+            </div>
+          </dl>
+        </div>
+
+        <div class="order-card">
+          <p>Tertarik dengan desain serupa untuk bisnis kamu?</p>
+          <!-- ✏️ Edit: pesan WA otomatis -->
+          <a href="https://wa.me/6281234567890?text=Halo,%20saya%20tertarik%20dengan%20desain%20seperti%20Almira%20Baby%20%26%20Kids%20Spa"
+             class="btn btn-primary btn-block" target="_blank" rel="noopener">
+            💬 Order Sekarang
+          </a>
+        </div>
+
+      </aside>
+    </div>
+
+    <!-- KARYA LAINNYA -->
+    <section class="other-works" aria-label="Karya lainnya">
+      <div class="other-works__header">
+        <h2>KARYA LAINNYA</h2>
+        <a href="../../index.html#portofolio">Lihat semua →</a>
+      </div>
+      <div class="other-works__grid">
+        <!-- ✏️ Edit: karya yang ditampilkan -->
+        <article class="portfolio-card" onclick="location.href='minana-coffee.html'">
+          <div class="portfolio-card__placeholder">🍵<p>Minana Coffee Boy</p></div>
+          <div class="portfolio-card__overlay">
+            <div>
+              <div class="portfolio-card__name">Minana Coffee Boy</div>
+              <div class="portfolio-card__cat">Kuliner · F&B</div>
+            </div>
+          </div>
+        </article>
+        <article class="portfolio-card" onclick="location.href='sasmito-makeover.html'">
+          <div class="portfolio-card__placeholder">💄<p>Sasmito Makeover</p></div>
+          <div class="portfolio-card__overlay">
+            <div>
+              <div class="portfolio-card__name">Sasmito Makeover</div>
+              <div class="portfolio-card__cat">Kecantikan · MUA</div>
+            </div>
+          </div>
+        </article>
+        <article class="portfolio-card" onclick="location.href='happy-toppokki.html'">
+          <div class="portfolio-card__placeholder">🌶️<p>Happy Toppokki</p></div>
+          <div class="portfolio-card__overlay">
+            <div>
+              <div class="portfolio-card__name">Happy Toppokki</div>
+              <div class="portfolio-card__cat">Kuliner · Korean Food</div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" aria-modal="true" role="dialog">
+    <button class="lightbox__close" aria-label="Tutup">✕</button>
+    <img id="lightboxImg" src="" alt=""/>
+  </div>
+
+  <!-- WA FLOAT -->
+  <a href="https://wa.me/6281234567890" class="wa-float" target="_blank" rel="noopener" aria-label="Chat WhatsApp">💬</a>
+
+  <script type="module">
+    import { initNavbar }             from '../../scripts/navbar.js';
+    import { initAnimations }         from '../../scripts/animation.js';
+    import { initCarousel, initLightbox } from '../../scripts/carousel.js';
+
+    initNavbar();
+    initAnimations();
+
+    // ✏️ Edit: totalSlides = jumlah foto di halaman ini
+    initCarousel({ totalSlides: 4, autoplayMs: 4000 });
+    initLightbox();
+  </script>
+
+</body>
+</html>
