@@ -668,7 +668,6 @@
 }
 
 @media (max-width: 768px) {
-  .navbar__links { display: none; }
   .hero__stats   { gap: 28px; }
   .footer__top   { flex-direction: column; }
 }

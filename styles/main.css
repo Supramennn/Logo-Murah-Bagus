@@ -1,11 +1,12 @@
 /* ============================================================
-   MAIN.CSS — Entry Point
-   Import order matters: base → components → pages
+   MAIN.CSS — Single Combined Stylesheet
+   Import order: base → components → pages
 
    Logo Murah Bagus
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+/* Google Fonts are now loaded via <link> in HTML head for better performance.
+   Do NOT add @import url(...) for Google Fonts here. */
 
 @import 'base.css';
 @import 'components.css';
