@@ -3,12 +3,7 @@
    Logo Murah Bagus
    ============================================================ */
 
-import { initNavbar }          from './navbar.js';
-import { initAnimations }      from './animation.js';
-import { initFaq }             from './faq.js';
-import { initPortfolioFilter } from './portfolio.js';
-
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', function() {
   initNavbar();
   initAnimations();
   initFaq();

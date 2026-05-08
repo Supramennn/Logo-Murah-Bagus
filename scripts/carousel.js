@@ -2,31 +2,38 @@
    carousel.js — Auto-play Carousel with Manual Controls
    Logo Murah Bagus
 
-   Usage:
-     import { initCarousel } from '../../scripts/carousel.js';
-     initCarousel({ totalSlides: 4, autoplayMs: 4000 });
+   Usage (in portfolio detail pages):
+     <script src="../../scripts/carousel.js"></script>
+     <script>
+       initCarousel({ totalSlides: 4, autoplayMs: 4000 });
+       initLightbox();
+     </script>
    ============================================================ */
 
-export function initCarousel({ totalSlides = 4, autoplayMs = 4000 } = {}) {
-  const track    = document.getElementById('carouselTrack');
-  const counter  = document.getElementById('carouselCounter');
-  const bar      = document.getElementById('carouselProgress');
-  const thumbs   = document.querySelectorAll('.carousel__thumb');
-  const carousel = document.getElementById('carousel');
+function initCarousel(opts) {
+  opts = opts || {};
+  var totalSlides = opts.totalSlides || 4;
+  var autoplayMs  = opts.autoplayMs  || 4000;
+
+  var track    = document.getElementById('carouselTrack');
+  var counter  = document.getElementById('carouselCounter');
+  var bar      = document.getElementById('carouselProgress');
+  var thumbs   = document.querySelectorAll('.carousel__thumb');
+  var carousel = document.getElementById('carousel');
 
   if (!track) return;
 
-  let current     = 0;
-  let autoTimer   = null;
-  let isPaused    = false;
-  let touchStartX = 0;
+  var current     = 0;
+  var autoTimer   = null;
+  var isPaused    = false;
+  var touchStartX = 0;
 
   /* ── Core: go to slide ── */
   function goToSlide(i) {
     current = ((i % totalSlides) + totalSlides) % totalSlides;
-    track.style.transform     = `translateX(-${current * 100}%)`;
-    counter.textContent       = `${current + 1} / ${totalSlides}`;
-    thumbs.forEach((t, idx) => t.classList.toggle('is-active', idx === current));
+    track.style.transform     = 'translateX(-' + (current * 100) + '%)';
+    counter.textContent       = (current + 1) + ' / ' + totalSlides;
+    thumbs.forEach(function(t, idx) { t.classList.toggle('is-active', idx === current); });
     restartProgressBar();
   }
 
@@ -45,7 +52,7 @@ export function initCarousel({ totalSlides = 4, autoplayMs = 4000 } = {}) {
 
   /* ── Autoplay ── */
   function startAutoplay() {
-    autoTimer = setInterval(() => goToSlide(current + 1), autoplayMs);
+    autoTimer = setInterval(function() { goToSlide(current + 1); }, autoplayMs);
   }
 
   function resetAutoplay() {
@@ -54,45 +61,45 @@ export function initCarousel({ totalSlides = 4, autoplayMs = 4000 } = {}) {
   }
 
   /* ── Pause on hover ── */
-  carousel.addEventListener('mouseenter', () => {
+  carousel.addEventListener('mouseenter', function() {
     isPaused = true;
     clearInterval(autoTimer);
     bar.classList.remove('is-animating');
   });
 
-  carousel.addEventListener('mouseleave', () => {
+  carousel.addEventListener('mouseleave', function() {
     isPaused = false;
     restartProgressBar();
     resetAutoplay();
   });
 
   /* ── Touch / swipe (mobile) ── */
-  track.addEventListener('touchstart', e => {
+  track.addEventListener('touchstart', function(e) {
     touchStartX = e.touches[0].clientX;
   }, { passive: true });
 
-  track.addEventListener('touchend', e => {
-    const diff = touchStartX - e.changedTouches[0].clientX;
+  track.addEventListener('touchend', function(e) {
+    var diff = touchStartX - e.changedTouches[0].clientX;
     if (Math.abs(diff) > 50) moveCarousel(diff > 0 ? 1 : -1);
   });
 
   /* ── Keyboard ── */
-  document.addEventListener('keydown', e => {
+  document.addEventListener('keydown', function(e) {
     if (e.key === 'ArrowLeft')  moveCarousel(-1);
     if (e.key === 'ArrowRight') moveCarousel(1);
   });
 
   /* ── Expose goToSlide for thumbnail onclick ── */
-  window.carouselGoTo = (i) => {
+  window.carouselGoTo = function(i) {
     goToSlide(i);
     resetAutoplay();
   };
 
   /* ── Prev / Next buttons ── */
-  document.querySelector('.carousel__btn--prev')
-    ?.addEventListener('click', () => moveCarousel(-1));
-  document.querySelector('.carousel__btn--next')
-    ?.addEventListener('click', () => moveCarousel(1));
+  var prevBtn = document.querySelector('.carousel__btn--prev');
+  var nextBtn = document.querySelector('.carousel__btn--next');
+  if (prevBtn) prevBtn.addEventListener('click', function() { moveCarousel(-1); });
+  if (nextBtn) nextBtn.addEventListener('click', function() { moveCarousel(1); });
 
   /* ── Init ── */
   goToSlide(0);
@@ -100,24 +107,24 @@ export function initCarousel({ totalSlides = 4, autoplayMs = 4000 } = {}) {
 }
 
 /* ── Lightbox ── */
-export function initLightbox() {
-  const lightbox = document.getElementById('lightbox');
-  const img      = document.getElementById('lightboxImg');
+function initLightbox() {
+  var lightbox = document.getElementById('lightbox');
+  var img      = document.getElementById('lightboxImg');
   if (!lightbox) return;
 
-  window.openLightbox = (src) => {
+  window.openLightbox = function(src) {
     if (!src) return;
     img.src = src;
     lightbox.classList.add('is-open');
   };
 
-  window.closeLightbox = () => {
+  window.closeLightbox = function() {
     lightbox.classList.remove('is-open');
   };
 
-  lightbox.addEventListener('click', () => window.closeLightbox());
+  lightbox.addEventListener('click', function() { window.closeLightbox(); });
 
-  document.addEventListener('keydown', e => {
+  document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') window.closeLightbox();
   });
 }
