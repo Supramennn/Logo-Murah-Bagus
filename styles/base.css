@@ -1,48 +1,82 @@
 /* ============================================================
    BASE.CSS — Variables, Reset, Typography
-   Logo Murah Bagus
+   Logo Murah Bagus — Meta Design System
    ============================================================ */
 
-/* ── DESIGN TOKENS ── */
+/* ── DESIGN TOKENS (mapped from DESIGN.md) ── */
 :root {
-  /* Colors */
-  --color-black:      #0a0a0a;
-  --color-white:      #f5f0eb;
-  --color-red:        #e8240c;
-  --color-red-dark:   #b81a08;
-  --color-gold:       #c9a84c;
-  --color-gray-900:   #1c1c1c;
-  --color-gray-800:   #2e2e2e;
-  --color-gray-500:   #888888;
+  /* ── Brand & Accent ── */
+  --color-primary:        #0064e0;
+  --color-primary-deep:   #0457cb;
+  --color-primary-soft:   #0091ff;
+  --color-on-primary:     #ffffff;
+  --color-ink-button:     #000000;
+  --color-on-ink-button:  #ffffff;
 
-  /* WhatsApp Colors */
-  --color-wa-green:   #25D366;
-  --color-wa-dark:    #1DA851;
-  --color-wa-glow:    rgba(37, 211, 102, 0.3);
+  /* ── Semantic ── */
+  --color-success:        #31a24c;
+  --color-attention:      #f2a918;
+  --color-warning:        #f7b928;
+  --color-critical:       #e41e3f;
 
-  /* Glow & Accent */
-  --glow-red:         0 0 30px rgba(232, 36, 12, 0.15);
-  --glow-gold:        0 0 30px rgba(201, 168, 76, 0.15);
-  --glow-wa:          0 0 30px rgba(37, 211, 102, 0.2);
+  /* ── Surface ── */
+  --color-canvas:         #ffffff;
+  --color-surface-soft:   #f1f4f7;
+  --color-hairline:       #ced0d4;
+  --color-hairline-soft:  #dee3e9;
 
-  /* Typography */
-  --font-display: 'Bebas Neue', sans-serif;
-  --font-body:    'Plus Jakarta Sans', sans-serif;
+  /* ── Text ── */
+  --color-ink-deep:       #0a1317;
+  --color-ink:            #1c1e21;
+  --color-charcoal:       #444950;
+  --color-slate:          #4b4c4f;
+  --color-steel:          #5d6c7b;
+  --color-stone:          #8595a4;
+  --color-disabled-text:  #bcc0c4;
 
-  /* Spacing */
-  --section-padding: 100px 5%;
+  /* ── WhatsApp (brand recognition) ── */
+  --color-wa-green:       #25D366;
+  --color-wa-dark:        #1DA851;
+  --color-wa-glow:        rgba(37, 211, 102, 0.2);
+
+  /* ── Typography ── */
+  --font-display: 'Montserrat', Helvetica, Arial, sans-serif;
+  --font-body:    'Montserrat', Helvetica, Arial, sans-serif;
+
+  /* ── Spacing (4px base) ── */
+  --space-xxs:        4px;
+  --space-xs:         8px;
+  --space-sm:         10px;
+  --space-md:         12px;
+  --space-base:       16px;
+  --space-lg:         20px;
+  --space-xl:         24px;
+  --space-xxl:        32px;
+  --space-xxxl:       40px;
+  --space-section-sm: 48px;
+  --space-section:    64px;
+  --space-section-lg: 80px;
+  --space-hero:       120px;
+
+  --section-padding: 80px 5%;
   --container-max:   1280px;
 
-  /* Transitions */
-  --transition-fast:   0.15s ease;
-  --transition-normal: 0.25s ease;
-  --transition-slow:   0.4s ease;
+  /* ── Border Radius ── */
+  --rounded-xs:      2px;
+  --rounded-sm:      4px;
+  --rounded-md:      6px;
+  --rounded-lg:      8px;
+  --rounded-xl:      16px;
+  --rounded-xxl:     24px;
+  --rounded-xxxl:    32px;
+  --rounded-feature: 40px;
+  --rounded-full:    100px;
+  --rounded-circle:  9999px;
 
-  /* Border radius */
-  --radius-sm:  8px;
-  --radius-md:  12px;
-  --radius-lg:  20px;
-  --radius-full: 100px;
+  /* ── Transitions ── */
+  --transition-fast:   150ms ease-out;
+  --transition-normal: 250ms ease-out;
+  --transition-slow:   300ms ease-in-out;
 }
 
 /* ── RESET ── */
@@ -58,10 +92,13 @@ html {
 }
 
 body {
-  background-color: var(--color-black);
-  color: var(--color-white);
+  background-color: var(--color-canvas);
+  color: var(--color-ink);
   font-family: var(--font-body);
-  line-height: 1.6;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: -0.16px;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -88,47 +125,18 @@ ul, ol {
   list-style: none;
 }
 
-/* ── NOISE TEXTURE OVERLAY ── */
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
-  pointer-events: none;
-  z-index: 9999;
-  opacity: 0.3;
-  will-change: auto;
-  contain: strict;
-}
-
-/* ── AMBIENT GLOW ── */
-body::after {
-  content: '';
-  position: fixed;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background:
-    radial-gradient(circle at 20% 20%, rgba(232, 36, 12, 0.04) 0%, transparent 50%),
-    radial-gradient(circle at 80% 80%, rgba(201, 168, 76, 0.03) 0%, transparent 50%),
-    radial-gradient(circle at 50% 50%, rgba(37, 211, 102, 0.02) 0%, transparent 50%);
-  pointer-events: none;
-  z-index: -1;
-  animation: ambient-drift 20s ease-in-out infinite alternate;
-}
-
-@keyframes ambient-drift {
-  0%   { transform: translate(0, 0) rotate(0deg); }
-  100% { transform: translate(30px, -30px) rotate(3deg); }
-}
-
 /* ── TYPOGRAPHY ── */
 h1, h2, h3, h4 {
   font-family: var(--font-display);
-  line-height: 1;
-  letter-spacing: 1px;
+  line-height: 1.17;
+  letter-spacing: 0;
+  color: var(--color-ink-deep);
 }
+
+h1 { font-size: 64px; font-weight: 500; line-height: 1.16; }
+h2 { font-size: 48px; font-weight: 500; line-height: 1.17; }
+h3 { font-size: 36px; font-weight: 500; line-height: 1.28; }
+h4 { font-size: 28px; font-weight: 300; line-height: 1.21; }
 
 /* ── UTILITY ── */
 .sr-only {
@@ -151,12 +159,12 @@ h1, h2, h3, h4 {
 /* ── SECTION COMMONS ── */
 .section-label {
   display: inline-block;
-  font-size: 0.75rem;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 3px;
   text-transform: uppercase;
-  color: var(--color-red);
-  margin-bottom: 16px;
+  color: var(--color-primary);
+  margin-bottom: var(--space-base);
   position: relative;
   padding-left: 28px;
 }
@@ -168,37 +176,33 @@ h1, h2, h3, h4 {
   transform: translateY(-50%);
   width: 18px;
   height: 2px;
-  background: var(--color-red);
-  animation: label-line-pulse 2s ease-in-out infinite;
-}
-
-@keyframes label-line-pulse {
-  0%, 100% { width: 18px; opacity: 1; }
-  50%      { width: 12px; opacity: 0.5; }
+  background: var(--color-primary);
 }
 
 .section-title {
-  font-size: clamp(36px, 5vw, 62px);
-  margin-bottom: 16px;
-  background: linear-gradient(135deg, var(--color-white) 0%, rgba(245, 240, 235, 0.7) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  font-family: var(--font-display);
+  font-size: clamp(36px, 5vw, 48px);
+  font-weight: 500;
+  line-height: 1.17;
+  color: var(--color-ink-deep);
+  margin-bottom: var(--space-base);
 }
 
 .section-sub {
-  color: var(--color-gray-500);
-  font-size: 1rem;
+  color: var(--color-steel);
+  font-size: 16px;
+  font-weight: 400;
   max-width: 520px;
-  line-height: 1.7;
-  margin-bottom: 60px;
+  line-height: 1.5;
+  letter-spacing: -0.16px;
+  margin-bottom: var(--space-section-sm);
 }
 
 /* ── FADE-IN ANIMATION ── */
 .fade-up {
   opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transform: translateY(24px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
 }
 .fade-up.visible {
   opacity: 1;
@@ -214,11 +218,5 @@ h1, h2, h3, h4 {
 /* ── FLOAT ANIMATION ── */
 @keyframes float {
   0%, 100% { transform: translateY(0); }
-  50%      { transform: translateY(-8px); }
-}
-
-/* ── PULSE GLOW ── */
-@keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 20px rgba(232, 36, 12, 0.1); }
-  50%      { box-shadow: 0 0 40px rgba(232, 36, 12, 0.25); }
+  50%      { transform: translateY(-6px); }
 }
